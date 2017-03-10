@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 x:Class="Movies.Views.MoviesPage"
+			 Title="Movies">
+	<StackLayout Spacing="0">
+		<Button Text="Sincronizar" Command="{Binding GetMoviesCommand}" />
+		<ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}"/>
+		<ListView x:Name="ListViewMovies"
+				CachingStrategy="RecycleElement"
+				ItemsSource="{Binding Movies}"
+				SelectedItem="{Binding SelectedMovie, Mode=TwoWay}">
+			<ListView.ItemTemplate>
+				<DataTemplate>
+					<ImageCell Text="{Binding Film}"
+					 		Detail="{Binding Year}"
+					 		ImageSource=""/>
+				</DataTemplate>
+			</ListView.ItemTemplate>
+		</ListView>
+	</StackLayout>
+</ContentPage>
